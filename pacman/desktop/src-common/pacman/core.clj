@@ -16,6 +16,11 @@
       (generate-bricks-fn x y brick-size))
     )
 
+(defn- check-positoin [new-x new-y [{:keys [brick?] :as entity}]]
+  (if brick?
+    (or (= new-x :x entity) (= new-y :y entity))
+    entity)
+  )
   ;|--------------- dots -----------------|
   (defn- gen-dots [dot-size generate-dot-fn]
     "This function generate entities of dot with a matrix-like position"
